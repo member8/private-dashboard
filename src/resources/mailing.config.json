@@ -1,0 +1,23 @@
+{
+    "server":"mail.purplepinemusic.com"
+   ,"name": "퍼플파인회계"
+   ,"exist":"1"
+   ,"sender": [
+                  {
+                   "id": "bill1@purplepinemusic.com"
+                  ,"pw": "123456"
+                  ,"limit":"1"
+                  ,"excel":"c:/mailing/excel"
+                  ,"excelext":"1"
+                  ,"attach":"c:/mailing/excel/attach/"
+                  },
+                  {
+                   "id": "bill2@purplepinemusic.com"
+                  ,"pw": "123456"
+                  ,"limit":"2"
+                  ,"excel":"c:/mailing/excel2"
+                  ,"excelext":"1"
+                  ,"attach":"c:/mailing/excel2/attach/"
+                  }
+    ]
+}

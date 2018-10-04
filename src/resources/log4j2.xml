@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+
+	<Properties>
+	    <Property name="conlpattern">%d{yyyy-mm-dd HH:mm:ss.SSS} %msg%n</Property>
+    	<Property name="filepattern">%d{yyyy-mm-dd HH:mm:ss.SSS} %-5level [%t] %c{1} - %msg%n</Property>
+	</Properties>
+
+    <Appenders>
+		<Console name="Console" target="SYSTEM_OUT">
+		    <PatternLayout pattern="${conlpattern}"/>
+        </Console>
+<!--
+        <File name="fileLog" fileName="./log/console.all.log">
+            <PatternLayout pattern="${conlpattern}"/>
+        </File>
+ -->
+		<RollingFile name="rollingFile" fileName="./log/mailing.log" filePattern="./log/%d{yyyyMM}/%d{yyyyMMdd}_mailing.log.zip">
+			<PatternLayout pattern="${filepattern}" />
+			<Policies>
+			    <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+			</Policies>
+		</RollingFile>
+        <RollingFile name="rollingFileErr" fileName="./log/mailing.err.log" filePattern="./log/%d{yyyyMM}/%d{yyyyMM}_mailing.err.log.zip">
+            <PatternLayout pattern="${filepattern}" />
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+            </Policies>
+        </RollingFile>
+    </Appenders>
+
+	<Loggers>
+    	<Logger name="com.purplepinemusic" level="debug">
+           <AppenderRef ref="rollingFile"  />
+           <AppenderRef ref="rollingFileErr"  level="error"/>
+    	</Logger>
+		<Root level="debug">
+    	   <AppenderRef ref="Console"/>
+		</Root>
+	</Loggers>
+
+</Configuration>
